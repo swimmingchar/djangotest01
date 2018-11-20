@@ -49,3 +49,8 @@ def index(request):
         'example': request.build_absolute_uri(example)
     }
     return render(request, 'home.html', context)
+
+
+def app(request):
+
+    return render(request,"index-3.html")

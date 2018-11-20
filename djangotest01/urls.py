@@ -20,9 +20,13 @@ from placeholder import views
 from django.conf import settings
 from django.conf.urls.static import static
 
+
+
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^image/(?P<width>[0-9]+)x(?P<height>[0-9]+)/$', views.placehoder, name='placehoder'),
     url(r'^image/$', views.index, name="placholder"),
-    url(r'^$', index)
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    url(r'^app/$', views.app, name="app")
+    # url(r'^static/$',)
+] + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
