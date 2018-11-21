@@ -16,17 +16,19 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from djangotest01.views import index
-from placeholder import views
 from django.conf import settings
+from placeholder.views import placehoder,index, app, app01
 from django.conf.urls.static import static
-
+from django.contrib.staticfiles import views
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^image/(?P<width>[0-9]+)x(?P<height>[0-9]+)/$', views.placehoder, name='placehoder'),
-    url(r'^image/$', views.index, name="placholder"),
-    url(r'^app/$', views.app, name="app")
-    # url(r'^static/$',)
-] + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
+    url(r'^image/(?P<width>[0-9]+)x(?P<height>[0-9]+)/$', placehoder, name='placehoder'),
+    url(r'^image/$', index, name="placholder"),
+    url(r'^app/$', app, name="app"),
+    url(r'^static/(?P<path>.*)$', views.serve),
+    url(r'^app01/$',app01, name="app01")
+] + staticfiles_urlpatterns() 

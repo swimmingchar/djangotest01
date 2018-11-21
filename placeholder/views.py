@@ -54,3 +54,7 @@ def index(request):
 def app(request):
 
     return render(request,"index-3.html")
+
+
+def app01(request):
+    return render(request,'index-2.html')
